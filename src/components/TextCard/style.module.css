@@ -1,10 +1,27 @@
 .container{
-  cursor: pointer;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25) ;
-  border-radius: 22px;
-  height: 300px;
+  box-sizing: border-box;
   width: 300px;
-  padding: 20px;
+  height: 250px;
+  background: rgba(255, 255, 255, 0.58);
+  border: 1px solid rgb(0, 0, 0);
+  box-shadow: 12px 17px 51px rgba(0, 0, 0, 0.22);
+  backdrop-filter: blur(0.5px);
+  border-radius: 17px;
+  
+  cursor: pointer;
+  transition: all 0.5s;
+  user-select: none;
+  font-weight: bolder;
+  color: black;
+}
+
+.container:hover {
+  border: 1px solid black;
+  transform: scale(1.05);
+}
+
+.container:active {
+  transform: scale(0.95) rotateZ(1.7deg);
 }
 
 .title_row{
