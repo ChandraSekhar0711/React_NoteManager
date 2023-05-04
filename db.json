@@ -1,0 +1,34 @@
+{
+  "notes": [
+    {
+      "id": 1,
+      "title": "Sample notes1",
+      "content": "Blah bhlh blah",
+      "created_at": "02/05/2023"
+    },
+    {
+      "id": 2,
+      "title": "Sample notes2",
+      "content": "Blah bhlh blah",
+      "created_at": "02/05/2023"
+    },
+    {
+      "id": 3,
+      "title": "Sample notes3",
+      "content": "Blah bhlh blah",
+      "created_at": "02/05/2023"
+    },
+    {
+      "id": 4,
+      "title": "Sample notes4",
+      "content": "Blah bhlh blah",
+      "created_at": "02/05/2023"
+    },
+    {
+      "id": 5,
+      "title": "Sample notes5",
+      "content": "Blah bhlh blah",
+      "created_at": "02/05/2023"
+    }
+  ]
+}
