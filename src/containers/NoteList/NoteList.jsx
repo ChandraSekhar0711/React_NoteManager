@@ -5,8 +5,8 @@ import s from "./style.module.css";
 export function NoteList(props) {
   const noteList = useSelector((store) => store.noteSlice.noteList);
   const navigate = useNavigate();
-  function deleteById() {
-    
+  function deleteById(noteid) {
+    alert(JSON.stringify(noteid));
   }
   //console.log(noteList);
   return (

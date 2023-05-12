@@ -34,8 +34,9 @@ export function TextCard({
   }
   function onClickTrash_(e) {
     //console.log(noteid);
+    onClickTrash(noteid);
     deleteNote(noteid);
-    onClickTrash();
+    
     e.stopPropagation();
   }
 
