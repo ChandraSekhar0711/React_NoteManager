@@ -12,7 +12,6 @@ const VALIDATOR = {
     return ValidatorService.min(value, 3);
   },
 };
-//console.log(VALIDATOR.title("hd"));
 export function NoteForm({ isEditable = true, note, title, onClickEdit, onClickDelete, onSubmit }) {
   const [formValues, setFormValues] = useState({ title: note?.title || "", content: note?.content || "" });
   const [formErrors, setFormErrors] = useState({

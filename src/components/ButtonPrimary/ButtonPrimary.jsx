@@ -1,7 +1,6 @@
 import s from "./style.module.css";
 
 export function ButtonPrimary({ children, onClick, isDisabled }) {
-  console.log(isDisabled);
   return (
     <button
       disabled={isDisabled}
