@@ -1,10 +1,46 @@
 {
   "notes": [
     {
-      "title": "Sample Note 3",
-      "content": "* The store enhancers to apply. See Redux's `createStore()`.\n   * All enhancers will be included before the DevTools Extension enhancer.\n   * If you need to customize the order of enhancers, supply a callback\n   * function that will receive the original array (ie, `[applyMiddleware]`),\n   * and should return a new array (such as `[applyMiddleware, offline]`).\n   * If you only need to add middleware, you can use the `middleware` parameter instead.",
-      "created_at": "5/8/2023",
+      "title": "Ansible Roadmap",
+      "content": "The Ansible team develops a roadmap for each major and minor Ansible release. The latest roadmap shows current work; older roadmaps provide a history of the project. We don’t publish roadmaps for subminor versions. So 2.10 and 2.11 have roadmaps, but 2.10.1 does not.",
+      "created_at": "20/05/2023",
+      "id": 1
+    },
+    {
+      "title": "React State",
+      "content": "React components has a built-in state object.\n\nThe state object is where you store property values that belong to the component.\n\nWhen the state object changes, the component re-renders.",
+      "created_at": "20/05/2023",
+      "id": 2
+    },
+    {
+      "title": "React useState Hook",
+      "content": "The React useState Hook allows us to track state in a function component.\n\nState generally refers to data or properties that need to be tracking in an application.\n\n",
+      "created_at": "20/05/2023",
       "id": 3
+    },
+    {
+      "title": "React useEffect Hook",
+      "content": "The useEffect Hook allows you to perform side effects in your components.\n\nSome examples of side effects are: fetching data, directly updating the DOM, and timers.\n\nuseEffect accepts two arguments. The second argument is optional.\n\nuseEffect(<function>, <dependency>)",
+      "created_at": "20/05/2023",
+      "id": 4
+    },
+    {
+      "title": "React useContext Hook",
+      "content": "React Context is a way to manage state globally.\n\nIt can be used together with the useState Hook to share state between deeply nested components more easily than with useState alone.",
+      "created_at": "20/05/2023",
+      "id": 5
+    },
+    {
+      "title": "React useRef Hook",
+      "content": "The useRef Hook allows you to persist values between renders.\n\nIt can be used to store a mutable value that does not cause a re-render when updated.\n\nIt can be used to access a DOM element directly.",
+      "created_at": "20/05/2023",
+      "id": 6
+    },
+    {
+      "title": "React useReducer Hook",
+      "content": "The useReducer Hook is similar to the useState Hook.\n\nIt allows for custom state logic.\n\nIf you find yourself keeping track of multiple pieces of state that rely on complex logic, useReducer may be useful.",
+      "created_at": "20/05/2023",
+      "id": 7
     }
   ]
 }

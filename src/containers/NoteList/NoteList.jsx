@@ -1,12 +1,19 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { TextCard } from "../../components/TextCard/TextCard";
 import { useNavigate } from "react-router-dom";
 import s from "./style.module.css";
-export function NoteList(props) {
-  const noteList = useSelector((store) => store.noteSlice.noteList);
+import { deleteNote } from "../../store/notes/note-slice";
+import { NoteAPI } from "../../api/note-api";
+export function NoteList({noteList}) {
+  //const noteList = useSelector((store) => store.noteSlice.noteList);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
-  function deleteById(noteid) {
-    alert(JSON.stringify(noteid));
+
+  async function deleteNote_(note) {
+    if (window.confirm("Delete note ?")) {
+      NoteAPI.deleteById(note.id);
+      dispatch(deleteNote(note));
+    }
   }
   //console.log(noteList);
   return (
@@ -19,8 +26,8 @@ export function NoteList(props) {
               title={note.title}
               subtitle={note.created_at}
               content={note.content}
-              onClick={() => navigate("/note/" + note.id)}
-              onClickTrash={deleteById}
+              onClickCard={() => navigate("/note/" + note.id)}
+              onClickTrash={()=>deleteNote_(note)}
               noteid={note.id}
             />
           </div>

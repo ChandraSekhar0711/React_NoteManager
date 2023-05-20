@@ -6,45 +6,45 @@ import { ValidatorService } from "../../services/services";
 import { FiledError } from "../FiledError/FiledError";
 const VALIDATOR = {
   title: (value) => {
-    return ValidatorService.min(value, 3) || ValidatorService.max(value, 20);
+    return ValidatorService.min(value, 3) || ValidatorService.max(value, 30);
   },
   content: (value) => {
     return ValidatorService.min(value, 3);
   },
 };
 //console.log(VALIDATOR.title("hd"));
-export function NoteForm({ title, onClickIcon, onClickDelete, onSubmit }) {
-  const [formValues, setFormValues] = useState({ title: "", content: "" });
+export function NoteForm({ isEditable = true, note, title, onClickEdit, onClickDelete, onSubmit }) {
+  const [formValues, setFormValues] = useState({ title: note?.title || "", content: note?.content || "" });
   const [formErrors, setFormErrors] = useState({
-    title: true,
-    content: true,
+    title: note?.title ? undefined: true,
+    content: note?.content ? undefined: true,
   });
   const updateFormValues = (e) => {
     const name = e.target.name;
     const value = e.target.value;
 
     setFormValues({ ...formValues, [name]: value });
-    validate(name,value);
+    validate(name, value);
   };
-  const validate = (filedName,filedValue) => {
+  const validate = (filedName, filedValue) => {
     setFormErrors({
       ...formErrors,
       [filedName]: VALIDATOR[filedName](filedValue),
     });
   };
-const hasErrors = ()=>{
-  for (const filedName in formErrors) {
-    if(formErrors[filedName]){
-      return true;
+  const hasErrors = () => {
+    for (const filedName in formErrors) {
+      if (formErrors[filedName]) {
+        return true;
+      }
     }
+    return false;
   }
-  return false;
-}
 
   const actionIcons = (
     <>
-      <div className={`col-1 ${s.icon}`}>{onClickIcon && <PencilFill />}</div>
-      <div className={`col-1 ${s.icon}`}>{onClickDelete && <TrashFill />}</div>
+      <div className={"col-1"}>{onClickEdit && <PencilFill onClick={onClickEdit} className={s.icon} />}</div>
+      <div className={"col-1"}>{onClickDelete && <TrashFill onClick={onClickDelete} className={s.icon} />}</div>
     </>
   );
   const titleInput = (
@@ -55,8 +55,9 @@ const hasErrors = ()=>{
         type="text"
         name="title"
         className="form-control"
+        value={formValues.title}
       />
-      <FiledError msg={formErrors.title}/>
+      <FiledError msg={formErrors.title} />
     </div>
   );
 
@@ -69,8 +70,9 @@ const hasErrors = ()=>{
         name="content"
         className="form-control"
         rows="5"
+        value={formValues.content}
       />
-      <FiledError msg={formErrors.content}/>
+      <FiledError msg={formErrors.content} />
     </div>
   );
   const submitButton = (
@@ -83,13 +85,13 @@ const hasErrors = ()=>{
       <div className="row justify-content-space-between">
         <div className="col-10">
           <h2 className="mb-3">{title}</h2>
-          
+
         </div>
         {actionIcons}
       </div>
 
-      <div className={`mb-3 ${s.title_input_container}`}>{titleInput}</div>
-      <div className="mb-3">{contentInput}</div>
+      <div className={`mb-3 ${s.title_input_container}`}>{isEditable && titleInput}</div>
+      <div className="mb-3">{isEditable ? contentInput : <pre>{note.content}</pre>}</div>
       {onSubmit && submitButton}
     </div>
   );

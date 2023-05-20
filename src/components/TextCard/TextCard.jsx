@@ -1,48 +1,27 @@
 import { useState } from "react";
 import { Trash } from "react-bootstrap-icons";
 import s from "./style.module.css";
-import { NoteAPI } from "../../api/note-api";
-import { useDispatch } from "react-redux";
-import { setNoteList } from "../../store/notes/note-slice";
-import { useNavigate } from "react-router-dom";
 
 export function TextCard({
   onClickTrash,
-  onClick,
+  onClickCard,
   title,
   subtitle,
   content,
-  noteid,
+  
 }) {
   const [isCardHovered, setIsCardHovered] = useState(false);
   const [isTrashHovered, setIsTrashHovered] = useState(false);
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
-  async function fetchAllNotes() {
-    const noteList = await NoteAPI.fetchAll();
-    dispatch(setNoteList(noteList));
-  }
-
-  async function deleteNote(id) {
-    //console.log(title);
-    const prompt = window.confirm(`Deleting ${title}`);
-    if (prompt) {
-      await NoteAPI.deleteById(id);
-    }
-    //const status = await NoteAPI.deleteById(id);
-    fetchAllNotes();
-  }
+ 
   function onClickTrash_(e) {
-    //console.log(noteid);
-    onClickTrash(noteid);
-    deleteNote(noteid);
-    
+    onClickTrash();
     e.stopPropagation();
   }
 
+ 
   return (
     <div
-      onClick={onClick}
+      onClick={onClickCard}
       className={`card ${s.container} `}
       style={{ borderColor: isCardHovered ? "#0d6efd" : "transparent" }}
       onMouseEnter={() => setIsCardHovered(true)}
