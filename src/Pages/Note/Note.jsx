@@ -14,7 +14,6 @@ export function Note(props) {
   );
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  //console.log(note);
   const [isEditable, setIsEditable] = useState(false);
   const submit = async (formValues) => {
     const updatedNote = await NoteAPI.updateById(note.id, formValues);

@@ -5,7 +5,6 @@ import s from "./style.module.css";
 import { deleteNote } from "../../store/notes/note-slice";
 import { NoteAPI } from "../../api/note-api";
 export function NoteList({noteList}) {
-  //const noteList = useSelector((store) => store.noteSlice.noteList);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -15,11 +14,10 @@ export function NoteList({noteList}) {
       dispatch(deleteNote(note));
     }
   }
-  //console.log(noteList);
+
   return (
     <div className={`row justify-content-center`}>
       {noteList.map((note) => {
-        //console.log(note);
         return (
           <div className={s.card_container} key={note.id}>
             <TextCard

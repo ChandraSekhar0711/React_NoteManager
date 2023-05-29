@@ -8,7 +8,6 @@ export class NoteAPI{
   }
 
   static async fetchAll(){
-    //console.log("fetching: ",(await axios.get(`${BASE_URL}`)).data);
     return (await axios.get(`${BASE_URL}`)).data.map(this.formatId);
   }
 
