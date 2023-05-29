@@ -1,5 +1,5 @@
 import { ButtonPrimary } from "../../components/ButtonPrimary/ButtonPrimary";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import s from "./style.module.css"
 import { Input } from "../../components/Input/Input";
 import { Authlayout } from "../../Layouts/AuthLayout/AuthLayout";
@@ -7,8 +7,10 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { AuthAPI } from "../../api/auth";
 import { setUser } from "../../store/auth/auth-slice";
+import { toast } from "../../services/sweet-alert";
 export function Signin() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [email,setEmail] = useState("");
   const [password,setPassword] = useState("");
   //console.log(email,password);
@@ -18,8 +20,12 @@ export function Signin() {
     try{
       const user = await AuthAPI.signin(email,password);
     dispatch(setUser(user));
+    await toast("success","Welcome to Notomatic");
+    navigate("/");
+
   }catch(err){
     console.log("auth failed");
+    toast("error","Auth Failed!");
   }
 }
   const form = (

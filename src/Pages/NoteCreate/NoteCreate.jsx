@@ -5,6 +5,7 @@ import { addNote } from "../../store/notes/note-slice";
 import { useNavigate } from "react-router-dom";
 
 import { useDispatch } from "react-redux";
+import { withAuthRequired } from "../../hoc/withAuthRequired";
 export function NoteCreate() {
   const dispatch =useDispatch();
   const navigate = useNavigate();
@@ -24,3 +25,5 @@ export function NoteCreate() {
     </>
   );
 }
+
+//export const ProtectedNoteCreate = withAuthRequired(NoteCreate);

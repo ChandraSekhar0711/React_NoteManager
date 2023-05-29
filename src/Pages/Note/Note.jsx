@@ -6,6 +6,7 @@ import { NoteForm } from "../../components/NoteForm/NoteForm";
 import { store } from "../../store";
 import { updateNote } from "../../store/notes/note-slice";
 import { deleteNote } from "../../store/notes/note-slice";
+import { withAuthRequired } from "../../hoc/withAuthRequired";
 
 export function Note(props) {
   const { noteId } = useParams();
@@ -42,3 +43,5 @@ export function Note(props) {
     </>
   );
 }
+
+//export const ProtectedNote = withAuthRequired(Note);

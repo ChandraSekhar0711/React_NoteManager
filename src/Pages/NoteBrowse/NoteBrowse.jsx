@@ -3,7 +3,8 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { SearchBar } from "../../components/SearchBar/SearchBar";
 import { useState } from "react";
-export function NoteBrowse() {
+import { withAuthRequired } from "../../hoc/withAuthRequired";
+export function NoteBrowse(props) {
   const noteList = useSelector((store) => store.noteSlice.noteList);
   const [searchTerm,setSearchTerm]=useState("");
   const filteredNoteList = noteList.filter((note) => {
@@ -35,3 +36,5 @@ export function NoteBrowse() {
     </>
   );
 }
+
+//export const ProtectedNoteBrowse = withAuthRequired(NoteBrowse);
