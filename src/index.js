@@ -2,7 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
-import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
 import { store } from "./store";
 import { StrictMode } from "react";
@@ -13,6 +12,8 @@ import { NoteCreate } from "./Pages/NoteCreate/NoteCreate";
 import { PageNotFound } from "./Pages/PageNotFound/PageNotFound";
 import { Signin } from "./Pages/Signin/Signin";
 import { Signup } from "./Pages/Signup/Signup";
+import { FirebaseApp } from "./services/firebase";
+FirebaseApp.init();
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <StrictMode>
@@ -36,4 +37,3 @@ root.render(
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
