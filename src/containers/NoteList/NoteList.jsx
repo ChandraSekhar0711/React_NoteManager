@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import s from "./style.module.css";
 import { deleteNote } from "../../store/notes/note-slice";
 import { NoteAPI } from "../../api/note-api";
+import { toast } from "../../services/sweet-alert";
 export function NoteList({noteList}) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -12,6 +13,7 @@ export function NoteList({noteList}) {
     if (window.confirm("Delete note ?")) {
       NoteAPI.deleteById(note.id);
       dispatch(deleteNote(note));
+      toast("success", "note deleted successfully");
     }
   }
 

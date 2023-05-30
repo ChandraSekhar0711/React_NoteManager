@@ -7,6 +7,7 @@ import { store } from "../../store";
 import { updateNote } from "../../store/notes/note-slice";
 import { deleteNote } from "../../store/notes/note-slice";
 import { withAuthRequired } from "../../hoc/withAuthRequired";
+import { toast } from "../../services/sweet-alert";
 
 export function Note(props) {
   const { noteId } = useParams();
@@ -25,6 +26,7 @@ export function Note(props) {
     if (window.confirm(`Are you sure to want to delete ${note.title}`)) {
       NoteAPI.deleteById(note.id);
       dispatch(deleteNote(note));
+      toast("success", "Note deleted successfully");
       navigate("/");
     }
   }

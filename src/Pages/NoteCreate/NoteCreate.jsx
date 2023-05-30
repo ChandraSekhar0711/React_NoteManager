@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 import { useDispatch } from "react-redux";
 import { withAuthRequired } from "../../hoc/withAuthRequired";
+import { toast } from "../../services/sweet-alert";
 export function NoteCreate() {
   const dispatch =useDispatch();
   const navigate = useNavigate();
@@ -16,7 +17,7 @@ export function NoteCreate() {
       created_at: new Date().toLocaleDateString(),
     });
     dispatch(addNote(createdNote))
-    alert("The note has been created....");
+    toast("success", "Note created successfully");
     navigate("/");
   };
   return (
