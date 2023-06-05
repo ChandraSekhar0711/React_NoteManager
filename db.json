@@ -41,6 +41,12 @@
       "content": "The useReducer Hook is similar to the useState Hook.\n\nIt allows for custom state logic.\n\nIf you find yourself keeping track of multiple pieces of state that rely on complex logic, useReducer may be useful.",
       "created_at": "20/05/2023",
       "id": 7
+    },
+    {
+      "title": "React - Redux",
+      "content": "Reasons to Use React Redux\n\nAs the official Redux binding for React, React Redux is kept up-to-date with any API changes from either library, to ensure that your React components behave as expected. Its intended usage adopts the design principles of React - writing declarative components.",
+      "created_at": "30/05/2023",
+      "id": 8
     }
   ]
 }

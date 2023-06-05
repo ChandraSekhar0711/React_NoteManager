@@ -1,9 +1,36 @@
 import axios from "axios";
+import { collection, getDocs, orderBy, query } from "firebase/firestore";
+import { FirebaseApp } from "../services/firebase";
 
-const BASE_URL = "http://localhost:3200/notes"
+//const BASE_URL = "http://localhost:3200/notes"
 
-export class NoteAPI{
-  static async create(formValues){
+export class NoteAPI {
+  static async create(formValues) {}
+
+  static async fetchAll() {
+    const q = query(
+      collection(FirebaseApp.db, "notes"),
+      orderBy("created_at", "asc")
+    );
+    const response = await getDocs(q);
+    return response.docs.map((document) => {
+      return {
+        id: document.id,
+        ...document.data(),
+      };
+    });
+  }
+
+  static async fetchById(noteId) {}
+
+  static async deleteById(noteId) {}
+
+  static async updateById(id, values) {}
+}
+
+/* 
+
+static async create(formValues){
     return this.formatId((await axios.post(`${BASE_URL}`,formValues)).data);
   }
 
@@ -27,4 +54,5 @@ export class NoteAPI{
       ...note,id:note.id.toString(),
     };
   }
-}
+
+*/
