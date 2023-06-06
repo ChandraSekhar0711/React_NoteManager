@@ -1,11 +1,17 @@
 import axios from "axios";
-import { collection, getDocs, orderBy, query } from "firebase/firestore";
+import { addDoc, collection, deleteDoc, doc, getDocs, onSnapshot, orderBy, query, updateDoc } from "firebase/firestore";
 import { FirebaseApp } from "../services/firebase";
 
 //const BASE_URL = "http://localhost:3200/notes"
 
 export class NoteAPI {
-  static async create(formValues) {}
+  static async create(formValues) {
+    const rersponse = await addDoc(collection(FirebaseApp.db,"notes"), formValues);
+    return {
+      id: rersponse.id,
+      ...formValues,
+    }
+  }
 
   static async fetchAll() {
     const q = query(
@@ -23,9 +29,27 @@ export class NoteAPI {
 
   static async fetchById(noteId) {}
 
-  static async deleteById(noteId) {}
+  static async deleteById(noteId) {
+    deleteDoc(doc(FirebaseApp.db, "notes", noteId));
+  }
 
-  static async updateById(id, values) {}
+  static async updateById(id, values) {
+    const query = doc(FirebaseApp.db, "notes", id);
+    await updateDoc(query, values);
+    return {
+      id,
+      ...values,
+    }
+  }
+  static onShouldSyncNotes(onChange){
+    const q = query(collection(FirebaseApp.db, "notes"));
+    const unSub = onSnapshot(q,(querySnapshot) => {
+      const isUserPerformingChange = querySnapshot.metadata.hasPendingWrites
+      //console.log("you are not synced with the notes collection");
+      !isUserPerformingChange && onChange();
+    });
+    return unSub;
+  }
 }
 
 /* 

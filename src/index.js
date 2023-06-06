@@ -17,7 +17,6 @@ import { PersistGate } from "redux-persist/integration/react";
 FirebaseApp.init();
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <StrictMode>
     <Provider store={store}>
       <PersistGate persistor={persistor}>
       <BrowserRouter>
@@ -34,7 +33,7 @@ root.render(
       </BrowserRouter>
       </PersistGate>
     </Provider>
-  </StrictMode>
+
 );
 
 // If you want to start measuring performance in your app, pass a function
